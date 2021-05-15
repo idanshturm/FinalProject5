@@ -1,14 +1,49 @@
-<HTML>
-<HEAD>
-<TITLE>JSP Example</TITLE>
-</HEAD>
-<BODY BGCOLOR="ffffcc">
-<CENTER>
-<H2>Date and Time</H2>
-<%  
-java.util.Date today = new java.util.Date();
-out.println("Today's date is: "+today);
-%>
-</CENTER>     
-</BODY>     
-</HTML>
+
+<%@ page import = "num.NumberGuessBean" %>
+
+<jsp:useBean id="numguess" class="num.NumberGuessBean" scope="session"/>
+<jsp:setProperty name="numguess" property="*"/>
+
+<html>
+<head><title>Number Guess</title></head>
+<body bgcolor="white">
+<font size=4>
+
+<% if (numguess.getSuccess()) { %>
+
+  Congratulations!  You got it.
+  And after just <%= numguess.getNumGuesses() %> tries.<p>
+
+  <% numguess.reset(); %>
+
+  Care to <a href="numguess.jsp">try again</a>?
+
+<% } else if (numguess.getNumGuesses() == 0) { %>
+
+  Welcome to the Number Guess game.<p>
+
+  I'm thinking of a number between 1 and 100.<p>
+
+  <form method=get>
+  What's your guess? <input type=text name=guess>
+  <input type=submit value="Submit">
+  </form>
+
+<% } else { %>
+
+  Good guess, but nope.  Try <b><%= numguess.getHint() %></b>.
+
+  You have made <%= numguess.getNumGuesses() %> guesses.<p>
+
+  I'm thinking of a number between 1 and 100.<p>
+
+  <form method=get>
+  What's your guess? <input type=text name=guess>
+  <input type=submit value="Submit">
+  </form>
+
+<% } %>
+
+</font>
+</body>
+</html>

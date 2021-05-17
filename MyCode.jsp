@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content='text/html; charset=UTF-8'/>
     <meta http-equiv="Content-Style-Type" content="text/css"/>
-    <link hellowwsd rel="stylesheet" media="screen" type="text/css" title="Preferred" href="number-guess.css"/>
+    <link rel="stylesheet" media="screen" type="text/css" title="Preferred" href="number-guess.css"/>
     <title>JSP Number Guess</title>
 </head>
 <body>
